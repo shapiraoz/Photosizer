@@ -9,6 +9,9 @@ from os.path import isfile, join
 
 def mkdir_recursive(path):
     sub_path = os.path.dirname(path)
+    if sub_path=='' :
+        os.mkdir(path)
+        return
     if not os.path.exists(sub_path):
         mkdir_recursive(sub_path)
     if not os.path.exists(path):
@@ -38,9 +41,15 @@ class ImgAction:
         except Exception as e:
             print "error {}".format(e)
 
-    def resizeFolder(self, folder_path):
+    def resizeFolder(self, folder_path, precent=defs.PERCENT):
         if not os.path.isdir(folder_path):
             print "the folder not exist "
         onlyfiles = [f for f in listdir(folder_path) if isfile(join(folder_path, f))]
         for f in onlyfiles :
             print "the corrent file is {}".format(f)
+            filename, file_extension = os.path.splitext(f);
+            if file_extension.lower() in defs.SUPPORT_FORMAT:
+                full_path = join(folder_path, f)
+                self.resizePic(full_path, precent)
+
+

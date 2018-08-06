@@ -32,7 +32,7 @@ def main():
         ims.resizePic(args.filename, percent)
 
     if args.resizeDir:
-        ims.resizeFolder(args.resizeDir)
+        ims.resizeFolder(args.resizeDir,percent)
 
 
 if __name__ == "__main__":

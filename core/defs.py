@@ -1,4 +1,4 @@
 PERCENT = 50
 OUTPUT_DIR = '.'
 
-SUPPORT_FORMAT = ["jpg"]
+SUPPORT_FORMAT = [".jpg"]
